@@ -14,4 +14,5 @@ class Estado{
     // string getAtributos();
     vector<bool>& getEstadoAtributos();
     vector<float>& getEstadoProbabilidad();
+    Estado operator=(Estado& );
 };

@@ -25,3 +25,8 @@ vector<bool>& Estado::getEstadoAtributos(){
 vector<float>& Estado::getEstadoProbabilidad(){
     return probabilidad_;
 }
+
+Estado Estado::operator=(Estado & a){
+    probabilidad_= a.getEstadoProbabilidad();
+    estadoAtributos_= a.getEstadoAtributos();
+}
