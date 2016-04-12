@@ -8,7 +8,4 @@ int main (){
     
     Estado a;
     
-    
-    
-    
 }

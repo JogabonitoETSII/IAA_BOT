@@ -15,4 +15,7 @@ class Estado{
     vector<bool>& getEstadoAtributos();
     vector<float>& getEstadoProbabilidad();
     Estado operator=(Estado& );
+    int size();
+    bool returnAtributo(int i);
+    float operator[](int i);
 };

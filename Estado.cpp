@@ -30,3 +30,13 @@ Estado Estado::operator=(Estado & a){
     probabilidad_= a.getEstadoProbabilidad();
     estadoAtributos_= a.getEstadoAtributos();
 }
+bool Estado::returnAtributo(int i){
+     return estadoAtributos_[i];
+}
+
+float Estado::operator[](int i){
+    return probabilidad_[i];
+}
+int Estado::size(){
+    return probabilidad_.size();
+}
