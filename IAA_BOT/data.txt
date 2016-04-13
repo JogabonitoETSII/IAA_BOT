@@ -1,0 +1,84 @@
+EstadoInicial : Estado Final=
+
+Estado Final P(EstadoFinal|EstadoInicial)
+
+
+// Atacar       Huir         DetectarPeligro buscarArmas buscarEnergia Explorar   // Estadoinicial   
+(0.9,         0.1,         0,           0,           0,           0,            // Atacar          
+0,           0.95,        0,           0,           0.05,        0,            // Huir            
+0.5,         0.5,         0,           0,           0,           0,            // DetectarPeligro 
+0,           0,           0,           0.95,        0,           0.05,         // buscarArmas     
+0,           0,           0,           0,           0.95,        0.05,         // buscarEnergia   
+0.2,         0,           0.2,         0.2,         0.2,         0.2);         // Explorar
+
+// HN Ruido oido recientemente
+HN P(HN|EstadoFinal)
+		// Si           No            // EstadoFinal     
+		  (0.5,         0.5,          // Atacar          
+		   0.5,         0.5,          // Huir            
+		   1,           0,            // DetectarPeligro 
+		   0,           1,            // buscarArmas     
+		   0,           1,            // buscarEnergia   
+		   1,           0);           // Explorar        ;
+
+// PH Hay vida cerca
+PH P(PH|EstadoFinal)
+		// Si           No            // EstadoFinal     
+		  (1,           0,            // Atacar          
+		   1,           0,            // Huir            
+		   0.5,         0.5,          // DetectarPeligro 
+		   0,           1,            // buscarArmas     
+		   1,           0,            // buscarEnergia   
+		   1,           0);           // Explorar        ;
+
+// PW Hay arma cerca
+PW P(PW|EstadoFinal)
+		// Si           No            // EstadoFinal     
+		  (0,           1,            // Atacar          
+		   1,           0,            // Huir            
+		   1,           0,            // DetectarPeligro 
+		   1,           0,            // buscarArmas     
+		   0.5,         0.5,          // buscarEnergia   
+		   1,           0);           // Explorar        ;
+
+// W Esta desarmado
+W P(W|EstadoFinal)
+		// Armado       Desarmado     // EstadoFinal     
+		  (1,           0,            // Atacar          
+		   0,           1,            // Huir            
+		   1,           0,            // DetectarPeligro 
+		   0,           1,            // buscarArmas     
+		   0,           1,            // buscarEnergia   
+		   0.5,         0.5);         // Explorar        ;
+
+// OW Enemigo armado
+OW
+		// Armado       Desarmado     // EstadoFinal     
+		  (1,           0,            // Atacar          
+		   0,           1,            // Huir            
+		   1,           0,            // DetectarPeligro 
+		   0.5,         0.5,          // buscarArmas     
+		   0.5,         0.5,          // buscarEnergia   
+		   0.5,         0.5);         // Explorar        ;
+
+// NE enemigo cercano
+NE
+values: Cercano, Lejos
+inFunction: EstadoFinal
+		// Desarmado    Pocos         // EstadoFinal     
+		  (1,           0,            // Atacar          
+		   0,           1,            // Huir            
+		   1,           0,            // DetectarPeligro 
+		   0,           1,            // buscarArmas     
+		   0,           1,            // buscarEnergia   
+		   0.5,         0.5);         // Explorar        ;
+
+// H tengo vida
+H
+		// Alto         Bajo          // EstadoFinal     
+		  (0,           1,            // Atacar          
+		   0.5,         0.5,          // Huir            
+		   1,           0,            // DetectarPeligro 
+		   0.5,         0.5,          // buscarArmas     
+		   1,           0,            // buscarEnergia   
+		   0.5,         0.5);         // Explorar        ;
